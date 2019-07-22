@@ -12,7 +12,7 @@ export class OpenAQService {
   constructor(private http: HttpClient) { }
 
   public getCities(countryPhrase: string) {
-    let country = countryPhrase.toLocaleLowerCase();
+    let country = countryPhrase.toLocaleLowerCase().trim();
     let countryCode;
   
     switch(country) {
@@ -28,9 +28,6 @@ export class OpenAQService {
       case 'france':
         countryCode = 'FR';
         break;
-      // default:
-      //   countryCode = 'PL';
-      //   break;
     }
 
     let params = {

@@ -11,9 +11,12 @@ export class MainLayoutComponent implements OnInit {
   public cities;
   public country;
 
+  public countries = ['France', 'Germany', 'Poland', 'Spain'];
+
   constructor(private aq: OpenAQService) { }
 
   ngOnInit() {
+    this.country = sessionStorage.getItem("searchvalue");
   }
 
   public getCities() {
@@ -28,6 +31,10 @@ export class MainLayoutComponent implements OnInit {
       });
       this.cities = arr;
     })
+  }
+
+  private toSessionStorage(event: any) {
+    sessionStorage.setItem("searchvalue", event.target.value);
   }
 
 }

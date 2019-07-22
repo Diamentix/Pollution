@@ -4,7 +4,7 @@
 <div class="searchbar">
     <p class="greeting">Please provide the name of the sought country: </p>
     <div>
-        <input [(ngModel)]="country" type="text" name="countryInput" autocomplete="on">
+        <input [(ngModel)]="country" type="text" name="countryInput" autocomplete="on" (keyup)="toSessionStorage($event)">
         <button (click)="getCities()"> Search </button>
     </div>
 </div>
