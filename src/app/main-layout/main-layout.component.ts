@@ -14,21 +14,11 @@ export class MainLayoutComponent implements OnInit {
   constructor(private aq: OpenAQService) { }
 
   ngOnInit() {
-    // this.aq.getCities('poland').subscribe((val) => this.results = val );
   }
 
   public getCities() {
     this.aq.getCities(this.country).subscribe((val) => 
     {
-      // let temp = val.results;
-      // let counter = 0;
-      // temp.forEach(element => {
-      //   if (!(this.cities.indexOf(element.city) > -1)) {
-      //     this.cities[counter] = element;
-      //     counter++;
-      //   }
-      // });
-
       let temp = val.results;
       let arr = new Array();
       temp.forEach(element => {
@@ -37,14 +27,7 @@ export class MainLayoutComponent implements OnInit {
         }
       });
       this.cities = arr;
-
-
-
-      // this.cities = val.results;
-      console.log(this.cities);
     })
-
-    // console.log('Local');
   }
 
 }
