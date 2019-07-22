@@ -1,0 +1,30 @@
+<h1>
+    POLLUTION CHECKER
+</h1>
+<div class="searchbar">
+    <p class="greeting">Please provide the name of the sought country: </p>
+    <div>
+        <input [(ngModel)]="country" type="text" name="countryInput" autocomplete="on">
+        <button (click)="getCities()"> Search </button>
+    </div>
+</div>
+<div>
+    <!-- <ul>
+        <li *ngFor="let city of cities">
+            {{city.city}} {{ city.value | number }} {{city.unit}}
+        </li>
+    </ul> -->
+
+    <mat-accordion *ngFor="let city of cities">
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                {{city.city}} {{ city.value | number }} {{city.unit}}
+            </mat-expansion-panel-header>
+        
+            This the expansion 1 content
+        
+        </mat-expansion-panel>
+
+    </mat-accordion>
+</div>

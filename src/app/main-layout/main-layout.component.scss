@@ -1,0 +1,35 @@
+h1 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    min-width: 400px;
+    min-height: 40px;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 400px;
+    min-height: 100px;
+}
+
+.greeting {
+    color: white;
+}
+
+mat-accordion {
+    background-color: white;
+    color: white;
+}
+
+// .mat-expansion-panel-header {
+//     // background-color: white;
+//     border: white solid;
+// }
+
+mat-expansion-panel {
+    border: solid white;
+    min-width: 400px;
+}
