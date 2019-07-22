@@ -6,13 +6,23 @@ h1 {
     min-height: 40px;
 }
 
-.searchbar {
+.searchbar, #mat-autocomplete-0 {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     min-width: 400px;
     min-height: 100px;
+
+    input {
+        min-height: 30px;
+    }
+}
+
+.formbox {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
 }
 
 .greeting {
@@ -34,4 +44,9 @@ mat-expansion-panel {
     min-width: 400px;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.mat-option {
+    min-height: 30px;
+    max-height: 30px;
 }

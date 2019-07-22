@@ -1,11 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-// body {
-//     background-image: url('./assets/earth.png');
-//     background-repeat: no-repeat;
-//     width: 100%;
-//     height: 100%;
-// }
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html { 
     background: url('./assets/earth.png') no-repeat center center fixed; 
@@ -14,4 +7,3 @@ html {
     -o-background-size: cover;
     background-size: cover;
   }
-  

@@ -3,8 +3,15 @@
 </h1>
 <div class="searchbar">
     <p class="greeting">Please provide the name of the sought country: </p>
-    <div>
-        <input [(ngModel)]="country" type="text" name="countryInput" autocomplete="on" (keyup)="toSessionStorage($event)">
+    <div class="formbox">
+        <form>
+            <input [(ngModel)]="countryPhrase" type="text" (keyup)="toSessionStorage($event)" [formControl]="control" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let country of filteredCountries | async" [value]="country" (click)="toSessionStorageClick()">
+                        {{ country }}
+                    </mat-option>
+            </mat-autocomplete>
+        </form>
         <button (click)="getCities()"> Search </button>
     </div>
 </div>
