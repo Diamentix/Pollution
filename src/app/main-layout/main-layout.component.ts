@@ -39,7 +39,7 @@ export class MainLayoutComponent implements OnInit {
     console.log(this.pollutionType);
     this.aq.getCities(this.countryPhrase, this.pollutionType).subscribe((val) => 
     {
-      let temp = val.results;
+      let temp = (val as any).results;
       let arr = new Array();
       let pageId;
       temp.forEach(element => {
@@ -53,11 +53,11 @@ export class MainLayoutComponent implements OnInit {
             extracts: ''
           };
           this.wiki.getDescription(element.city).subscribe((value) => {
-            for (var key in value.query.pages)
+            for (var key in (value as any).query.pages)
             {
               pageId = key;
             }
-            cityObj.desc = value.query.pages[pageId].description ? value.query.pages[pageId].description : 'No information found' ;
+            cityObj.desc = (value as any).query.pages[pageId].description ? (value as any).query.pages[pageId].description : 'No information found' ;
           });
           cityObj.name = element.city;
           cityObj.value = element.value;
