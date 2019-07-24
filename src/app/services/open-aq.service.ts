@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +7,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class OpenAQService {
 
   private aqURL = 'https://api.openaq.org/v1/cities';
-  
+
 
   constructor(private http: HttpClient) { }
 
   public getCities(countryPhrase: string) {
     let country = countryPhrase.toLocaleLowerCase().trim();
     let countryCode;
-  
+
     switch(country) {
       case "poland":
         countryCode = 'PL';
@@ -28,11 +28,6 @@ export class OpenAQService {
       case 'france':
         countryCode = 'FR';
         break;
-    }
-
-    let params = {
-      country: countryCode,
-      limit: '500'
     }
 
     return this.http.get(`https://api.openaq.org/v1/measurements?country=${countryCode}&limit=500&order_by=value&sort=desc&parameter=co`);

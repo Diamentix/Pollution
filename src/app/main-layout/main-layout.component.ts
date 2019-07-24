@@ -3,6 +3,7 @@ import { OpenAQService } from '../services/open-aq.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { WikipediaService } from '../services/wikipedia.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MainLayoutComponent implements OnInit {
   filteredCountries: Observable<string[]>;
 
 
-  constructor(private aq: OpenAQService) { }
+  constructor(private aq: OpenAQService, private wiki: WikipediaService) { }
 
   ngOnInit() {
     this.countryPhrase = sessionStorage.getItem("searchvalue");
@@ -36,8 +37,18 @@ export class MainLayoutComponent implements OnInit {
     {
       let temp = val.results;
       let arr = new Array();
+      let desc: string;
+      let pageId;
       temp.forEach(element => {
         if ((!arr.some(e => e.city === element.city)) && arr.length<10) {
+          this.wiki.getDescription(element.city).subscribe((value) => {
+            for (var key in value.query.pages)
+            {
+              pageId = key;
+            }
+            console.log(value.query.pages[pageId]);
+            console.log(value.query.pages[pageId].description);
+          });
           arr.push(element);
         }
       });
