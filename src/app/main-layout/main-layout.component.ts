@@ -27,7 +27,7 @@ export class MainLayoutComponent implements OnInit {
   constructor(private aq: OpenAQService, private wiki: WikipediaService) { }
 
   ngOnInit() {
-    this.countryPhrase = sessionStorage.getItem("searchvalue");
+    this.countryPhrase = sessionStorage.getItem('searchvalue');
 
     this.filteredCountries = this.control.valueChanges.pipe(
       startWith(''),
@@ -36,7 +36,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
   public getCities() {
-    this.aq.getCities(this.countryPhrase, this.pollutionType).subscribe((val) => 
+    this.aq.getCities(this.countryPhrase, this.pollutionType).subscribe((val) =>
     {
       let temp = (val as any).results;
       let arr = new Array();

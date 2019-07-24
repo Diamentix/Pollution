@@ -15,7 +15,7 @@ export class OpenAQService {
     const country = countryPhrase.toLocaleLowerCase().trim();
     let countryCode;
 
-    switch(country) {
+    switch (country) {
       case 'poland':
         countryCode = 'PL';
         break;
