@@ -4,6 +4,7 @@ h1 {
     justify-content: center;
     min-width: 400px;
     min-height: 40px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
 .searchbar, #mat-autocomplete-0 {
@@ -13,9 +14,46 @@ h1 {
     flex-direction: column;
     min-width: 400px;
     min-height: 100px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 
-    input {
+    input,select,button {
         min-height: 30px;
+        border: none;
+        background: none;
+        color: white;
+
+        -webkit-box-shadow: 0px 4px 1px 0px rgba(199,199,199,1);
+        -moz-box-shadow: 0px 4px 1px 0px rgba(199,199,199,1);
+        box-shadow: 0px 4px 1px 0px rgba(199,199,199,1);
+        -webkit-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
+
+        option {
+            color: black;
+        }
+    }
+
+    button, select, option {
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: rgba(199,199,199,1);
+        color: black;
+    }
+
+    button:active {
+        background-color: #4EA6EA;
+        color: white;
+    }
+
+    input:focus,select:focus {
+        outline: none;
+        box-shadow: 0px 4px 1px 0px #4EA6EA, 0px 4px 1px 0px #4EA6EA;
+    }
+
+    button:focus {
+        outline: none;
     }
 }
 
@@ -33,11 +71,6 @@ mat-accordion {
     background-color: white;
     color: white;
 }
-
-// .mat-expansion-panel-header {
-//     // background-color: white;
-//     border: white solid;
-// }
 
 mat-expansion-panel {
     border: solid white;

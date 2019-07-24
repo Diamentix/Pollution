@@ -17,6 +17,8 @@ export class MainLayoutComponent implements OnInit {
   public cities;
   public countryPhrase;
 
+  pollutionType = 'pm25';
+
   control = new FormControl();
   countries: string[] = ['France', 'Germany', 'Poland', 'Spain'];
   filteredCountries: Observable<string[]>;
@@ -34,7 +36,8 @@ export class MainLayoutComponent implements OnInit {
   }
 
   public getCities() {
-    this.aq.getCities(this.countryPhrase).subscribe((val) => 
+    console.log(this.pollutionType);
+    this.aq.getCities(this.countryPhrase, this.pollutionType).subscribe((val) => 
     {
       let temp = val.results;
       let arr = new Array();
@@ -45,6 +48,7 @@ export class MainLayoutComponent implements OnInit {
             name: '',
             value: '',
             unit: '',
+            type: '',
             desc: '',
             extracts: ''
           };
@@ -58,6 +62,7 @@ export class MainLayoutComponent implements OnInit {
           cityObj.name = element.city;
           cityObj.value = element.value;
           cityObj.unit = element.unit;
+          cityObj.type = this.pollutionType;
           arr.push(cityObj);
         }
       });

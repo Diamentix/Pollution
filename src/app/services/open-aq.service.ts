@@ -11,12 +11,12 @@ export class OpenAQService {
 
   constructor(private http: HttpClient) { }
 
-  public getCities(countryPhrase: string) {
-    let country = countryPhrase.toLocaleLowerCase().trim();
+  public getCities(countryPhrase: string, pollution: string) {
+    const country = countryPhrase.toLocaleLowerCase().trim();
     let countryCode;
 
     switch(country) {
-      case "poland":
+      case 'poland':
         countryCode = 'PL';
         break;
       case 'germany':
@@ -30,6 +30,7 @@ export class OpenAQService {
         break;
     }
 
-    return this.http.get(`https://api.openaq.org/v1/measurements?country=${countryCode}&limit=500&order_by=value&sort=desc&parameter=co`);
+    // tslint:disable-next-line: max-line-length
+    return this.http.get(`https://api.openaq.org/v1/measurements?country=${countryCode}&limit=500&order_by=value&sort=desc&parameter=${pollution}`);
   }
 }

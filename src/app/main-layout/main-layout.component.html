@@ -5,13 +5,21 @@
     <p class="greeting">Please provide the name of the sought country: </p>
     <div class="formbox">
         <form>
-            <input [(ngModel)]="countryPhrase" type="text" (keyup)="toSessionStorage($event)" [formControl]="control" [matAutocomplete]="auto">
+            <input placeholder="Country" [(ngModel)]="countryPhrase" type="text" (keyup)="toSessionStorage($event)" [formControl]="control" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let country of filteredCountries | async" [value]="country" (click)="toSessionStorageClick()">
                         {{ country }}
                     </mat-option>
             </mat-autocomplete>
         </form>
+        <select [(ngModel)]="pollutionType">
+            <option pollutionType="pm25">pm25</option>
+            <option pollutionType="pm10">pm10</option>
+            <option pollutionType="so2">so2</option>
+            <option pollutionType="no2">no2</option>
+            <option pollutionType="o3">o3</option>
+            <option pollutionType="co">co</option>
+        </select>
         <button (click)="getCities()"> Search </button>
     </div>
 </div>
@@ -20,7 +28,7 @@
 
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                {{city.name}} {{ city.value | number }} {{city.unit}}
+                {{city.name}}, last {{city.type}} measurement equals: {{ city.value | number }} {{city.unit}}
             </mat-expansion-panel-header>
                 {{ city.desc }}
         </mat-expansion-panel>
