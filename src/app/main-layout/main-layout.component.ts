@@ -36,7 +36,6 @@ export class MainLayoutComponent implements OnInit {
   }
 
   public getCities() {
-    console.log(this.pollutionType);
     this.aq.getCities(this.countryPhrase, this.pollutionType).subscribe((val) => 
     {
       let temp = (val as any).results;
