@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { WikipediaService } from '../services/wikipedia.service';
+import { City } from '../interfaces/city';
 
 
 @Component({
@@ -37,19 +38,27 @@ export class MainLayoutComponent implements OnInit {
     {
       let temp = val.results;
       let arr = new Array();
-      let desc: string;
       let pageId;
       temp.forEach(element => {
-        if ((!arr.some(e => e.city === element.city)) && arr.length<10) {
+        if ((!arr.some(e => e.name === element.city)) && arr.length<10) {
+          let cityObj: City = {
+            name: '',
+            value: '',
+            unit: '',
+            desc: '',
+            extracts: ''
+          };
           this.wiki.getDescription(element.city).subscribe((value) => {
             for (var key in value.query.pages)
             {
               pageId = key;
             }
-            console.log(value.query.pages[pageId]);
-            console.log(value.query.pages[pageId].description);
+            cityObj.desc = value.query.pages[pageId].description ? value.query.pages[pageId].description : 'No information found' ;
           });
-          arr.push(element);
+          cityObj.name = element.city;
+          cityObj.value = element.value;
+          cityObj.unit = element.unit;
+          arr.push(cityObj);
         }
       });
       this.cities = arr;

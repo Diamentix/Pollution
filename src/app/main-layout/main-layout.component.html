@@ -20,11 +20,9 @@
 
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                {{city.city}} {{ city.value | number }} {{city.unit}}
+                {{city.name}} {{ city.value | number }} {{city.unit}}
             </mat-expansion-panel-header>
-        
-            This the expansion 1 content
-        
+                {{ city.desc }}
         </mat-expansion-panel>
 
     </mat-accordion>
